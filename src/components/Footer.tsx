@@ -78,14 +78,6 @@ export const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   Executive Proprietor Desk
                 </button>
               </li>
-              <li>
-                <button
-                  onClick={() => onNavigate('ai-prompt')}
-                  className="hover:text-amber-400 transition-colors cursor-pointer"
-                >
-                  Google AI Studio Master Prompt
-                </button>
-              </li>
             </ul>
           </div>
 

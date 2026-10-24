@@ -14,7 +14,6 @@ export const TopBar: React.FC<TopBarProps> = ({ onNavigate }) => {
     { label: 'Fleet & Specs', id: 'fleet-showcase' },
     { label: 'Freight Calculator', id: 'freight-estimator' },
     { label: 'Executive Desk', id: 'contact-desk' },
-    { label: 'AI Studio Prompt', id: 'ai-prompt' },
   ];
 
   const handleLinkClick = (id: string) => {

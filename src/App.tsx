@@ -6,7 +6,6 @@ import { InteractiveIndiaMap } from './components/InteractiveIndiaMap';
 import { FleetShowcase } from './components/FleetShowcase';
 import { FreightEstimator } from './components/FreightEstimator';
 import { ContactDesk } from './components/ContactDesk';
-import { AIStudioPromptSection } from './components/AIStudioPromptSection';
 import { Footer } from './components/Footer';
 import { RouteHub } from './data/logisticsData';
 
@@ -68,11 +67,6 @@ export default function App() {
           {/* Section 4: Direct Proprietor & Contact Desk */}
           <section id="contact-desk" className="scroll-mt-24">
             <ContactDesk />
-          </section>
-
-          {/* Section 5: Dedicated Google AI Studio Prompt Section */}
-          <section id="ai-prompt" className="scroll-mt-24">
-            <AIStudioPromptSection />
           </section>
         </div>
       </main>
