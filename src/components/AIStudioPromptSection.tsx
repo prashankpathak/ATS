@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { PRODUCTION_AI_STUDIO_PROMPT } from '../data/logisticsData';
 import { Copy, Check, Terminal, Cpu } from 'lucide-react';
+import { copyToClipboard } from '../utils/safeHelpers';
 
 export const AIStudioPromptSection: React.FC = () => {
   const [copied, setCopied] = useState(false);
@@ -10,8 +11,8 @@ export const AIStudioPromptSection: React.FC = () => {
 
   const promptToCopy = activeTab === 'full' ? PRODUCTION_AI_STUDIO_PROMPT : quickPrompt;
 
-  const handleCopy = () => {
-    navigator.clipboard.writeText(promptToCopy);
+  const handleCopy = async () => {
+    await copyToClipboard(promptToCopy);
     setCopied(true);
     setTimeout(() => setCopied(false), 2500);
   };

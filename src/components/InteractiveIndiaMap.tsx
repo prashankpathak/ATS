@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { ROUTE_HUBS, KATNI_COORDS, ATS_CONTACT, RouteHub } from '../data/logisticsData';
 import { Navigation, Clock, Truck, ArrowRight, MessageSquare, ShieldCheck, MapPin } from 'lucide-react';
+import { openExternalLink } from '../utils/safeHelpers';
 
 interface InteractiveIndiaMapProps {
   onSelectRouteForEstimator?: (hub: RouteHub) => void;
@@ -39,7 +40,7 @@ export const InteractiveIndiaMap: React.FC<InteractiveIndiaMapProps> = ({
       `*Estimated Transit:* ${hub.transitDays}\n\n` +
       `Please provide truck dispatch availability and quote for 14W/12W multi-axle carrier.`
     );
-    window.open(`https://wa.me/91${ATS_CONTACT.phones[0].number}?text=${text}`, '_blank');
+    openExternalLink(`https://wa.me/91${ATS_CONTACT.phones[0].number}?text=${text}`);
   };
 
   return (

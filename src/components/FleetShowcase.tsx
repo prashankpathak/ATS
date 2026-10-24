@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { FLEET_ENGINEERING_SPECS, ATS_CONTACT, FleetEngineeringSpec } from '../data/logisticsData';
 import { Truck, ShieldCheck, Check, Layers, Cpu, Compass, MessageSquare, PhoneCall, Gauge, Scale } from 'lucide-react';
+import { openExternalLink } from '../utils/safeHelpers';
 
 export const FleetShowcase: React.FC = () => {
   const [activeSpecId, setActiveSpecId] = useState<string>(FLEET_ENGINEERING_SPECS[0].id);
@@ -20,7 +21,7 @@ export const FleetShowcase: React.FC = () => {
       `*Chassis / Deck:* ${spec.deckDimensions}\n` +
       `Please provide instant spot tariff and vehicle availability from Katni Hub.`
     );
-    window.open(`https://wa.me/91${ATS_CONTACT.phones[0].number}?text=${text}`, '_blank');
+    openExternalLink(`https://wa.me/91${ATS_CONTACT.phones[0].number}?text=${text}`);
   };
 
   return (

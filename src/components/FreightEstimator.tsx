@@ -7,6 +7,7 @@ import {
   RouteHub,
 } from '../data/logisticsData';
 import { Calculator, Truck, Send, PhoneCall, RefreshCw, CheckCircle2 } from 'lucide-react';
+import { copyToClipboard, openExternalLink } from '../utils/safeHelpers';
 
 interface FreightEstimatorProps {
   initialDestination?: RouteHub | null;
@@ -102,11 +103,11 @@ Please confirm vehicle availability and final spot tariff.`;
 
   const handleWhatsAppBooking = () => {
     const encoded = encodeURIComponent(quoteSummaryText);
-    window.open(`https://wa.me/91${selectedPhone}?text=${encoded}`, '_blank');
+    openExternalLink(`https://wa.me/91${selectedPhone}?text=${encoded}`);
   };
 
-  const handleCopyEstimate = () => {
-    navigator.clipboard.writeText(quoteSummaryText);
+  const handleCopyEstimate = async () => {
+    await copyToClipboard(quoteSummaryText);
     setIsCopied(true);
     setTimeout(() => setIsCopied(false), 2500);
   };

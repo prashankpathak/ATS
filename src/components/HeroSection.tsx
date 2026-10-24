@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { ATS_CONTACT } from '../data/logisticsData';
 import { ShieldCheck, ArrowRight, Navigation, Phone, MessageSquare, Copy, Check, MapPin, Mail, Award } from 'lucide-react';
 
+import { copyToClipboard } from '../utils/safeHelpers';
+
 interface HeroSectionProps {
   onExploreMap: () => void;
   onOpenEstimator: () => void;
@@ -15,9 +17,9 @@ export const HeroSection: React.FC<HeroSectionProps> = ({
 }) => {
   const [copiedCard, setCopiedCard] = useState(false);
 
-  const handleCopyCardDetails = () => {
+  const handleCopyCardDetails = async () => {
     const cardText = `${ATS_CONTACT.company}\n${ATS_CONTACT.tagline}\nProprietor: ${ATS_CONTACT.proprietor}\nPhones: ${ATS_CONTACT.phones.map(p => p.number).join(', ')}\nEmails: ${ATS_CONTACT.emails.join(', ')}\nAddress: ${ATS_CONTACT.address.line1}, ${ATS_CONTACT.address.road}, ${ATS_CONTACT.address.city} - ${ATS_CONTACT.address.pincode} (M.P.)`;
-    navigator.clipboard.writeText(cardText);
+    await copyToClipboard(cardText);
     setCopiedCard(true);
     setTimeout(() => setCopiedCard(false), 2500);
   };

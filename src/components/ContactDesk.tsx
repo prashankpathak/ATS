@@ -9,12 +9,15 @@ export const ContactDesk: React.FC = () => {
   const [inquiryOrigin, setInquiryOrigin] = useState('Katni, MP');
   const [inquiryDestination, setInquiryDestination] = useState('');
   const [vCardCopied, setVCardCopied] = useState(false);
+  const [formError, setFormError] = useState<string | null>(null);
   const [submittedStatus, setSubmittedStatus] = useState<string | null>(null);
 
   const handleFastDispatch = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!inquiryName || !inquiryPhone) {
-      alert('Please enter your name and contact phone number.');
+    setFormError(null);
+
+    if (!inquiryName.trim() || !inquiryPhone.trim()) {
+      setFormError('Please enter both your name and contact phone number.');
       return;
     }
 
@@ -29,7 +32,15 @@ export const ContactDesk: React.FC = () => {
       `Please provide immediate truck allocation and freight quote.`
     );
 
-    window.open(`https://wa.me/91${ATS_CONTACT.phones[0].number}?text=${text}`, '_blank');
+    const url = `https://wa.me/91${ATS_CONTACT.phones[0].number}?text=${text}`;
+    const a = document.createElement('a');
+    a.href = url;
+    a.target = '_blank';
+    a.rel = 'noopener noreferrer';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+
     setSubmittedStatus('Inquiry dispatched via WhatsApp to Ashima Pathak (+91 9009949723)!');
   };
 
@@ -290,6 +301,12 @@ END:VCARD`;
                   className="w-full bg-zinc-900 border border-zinc-800 rounded-lg px-3 py-2 text-xs text-white focus:outline-none focus:border-amber-400 resize-none"
                 />
               </div>
+
+              {formError && (
+                <div className="p-2.5 bg-rose-500/10 border border-rose-500/30 text-rose-300 text-xs rounded-lg flex items-center gap-2">
+                  <span>{formError}</span>
+                </div>
+              )}
 
               {submittedStatus && (
                 <div className="p-2.5 bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 text-xs rounded-lg flex items-center gap-2">
