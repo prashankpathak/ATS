@@ -1,0 +1,6 @@
+{
+  "name": "ATS (Ashima Transport Service) - Pan-India Logistics Hub",
+  "description": "Pan-India freight transport, heavy-duty Tata multi-axle haulers, interactive Katni central hub route map, instant freight estimator, and direct WhatsApp dispatch.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
